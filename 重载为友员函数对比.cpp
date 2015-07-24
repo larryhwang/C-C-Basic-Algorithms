@@ -1,0 +1,46 @@
+//被重载的运算符  是用来对 对象进行操作的 
+#include<iostream>
+using namespace std;
+class Complex {
+  public:
+     Complex(double r=0.0,double i=0.0):real(r),imag(i){}
+     friend Complex operator+(const Complex  &c1,const Complex &c2);
+     friend Complex operator-(const Complex  &c1,const Complex &c2);
+     int getR(){
+     	return real;
+     };
+     int getI(){
+     	return imag;
+     };
+
+  private:
+     double real;
+     double imag;	
+}; 
+   
+
+     Complex operator+(const Complex &c1,const Complex &c2){
+     	return Complex(c1.real+c2.real,c1.imag+c2.imag);
+     }
+
+   Complex operator-(const Complex &c1,const Complex &c2){
+     	return Complex(c1.real-c2.real,c1.imag-c2.imag);
+     }
+
+//     ostream & operator<<(ostream &out,const Complex &c){
+//  	    out<<"("<<c.real<<","<<c.imag<<")"; 
+//   	
+//   } 
+
+   int main(){
+   	    Complex c1(4,5),c2(2,10),c3;
+   	    cout<<"c1="<<c1.getR()<<endl;
+   	    cout<<"c2="<<c2.getR()<<endl;
+		c3=c1-c2;
+		cout<<"c3=c1-c2="<<c3.getR()<<endl;
+		c3=c1+c2;
+		cout<<"c3=c1+c2="<<c3.getR()<<endl;
+		return 0;
+   }
+   
+    
